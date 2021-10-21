@@ -10679,15 +10679,20 @@
             _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput("state")
           ),
           log_url:
-            _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput("log_url"),
+            _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput("log_url") ||
+            undefined,
           description:
-            _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput("description"),
+            _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput(
+              "description"
+            ) || undefined,
           environment:
-            _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput("environment"),
+            _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput(
+              "environment"
+            ) || undefined,
           environment_url:
             _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput(
               "environment_url"
-            ),
+            ) || undefined,
         }
       );
     }

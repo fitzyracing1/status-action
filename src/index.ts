@@ -34,13 +34,14 @@ export async function main() {
       repo: repo.repo,
       deployment_id: validateDeploymentId(core.getInput("deployment_id")),
       state: validateState(core.getInput("state")),
-      log_url: core.getInput("log_url"),
-      description: core.getInput("description"),
-      environment: core.getInput("environment") as
+      log_url: core.getInput("log_url") || undefined,
+      description: core.getInput("description") || undefined,
+      environment: (core.getInput("environment") || undefined) as
         | "production"
         | "staging"
-        | "qa",
-      environment_url: core.getInput("environment_url"),
+        | "qa"
+        | undefined,
+      environment_url: core.getInput("environment_url") || undefined,
     }
   );
 }
