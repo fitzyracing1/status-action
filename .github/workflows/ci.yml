@@ -1,0 +1,38 @@
+name: CI
+on:
+  - push
+  - pull_request
+jobs:
+  test:
+    name: Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - "14"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install -g npm@8
+      - run: npm ci
+      - run: npm test
+      - uses: codecov/codecov-action@v2
+        with:
+          name: Node.js ${{ matrix.node-version }}
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: timely-deploy/action@v1
+        with:
+          token: ${{ github.token }}
+          environment: production

@@ -1,0 +1,58 @@
+{
+  "name": "@timely-deploy/status-action",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "GitHub Action for creating deployments using Timely Deploy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/timely-deploy/action.git"
+  },
+  "author": {
+    "name": "Blake Embrey",
+    "email": "hello@blakeembrey.com",
+    "url": "http://blakeembrey.com"
+  },
+  "homepage": "https://github.com/timely-deploy/action",
+  "bugs": {
+    "url": "https://github.com/timely-deploy/action/issues"
+  },
+  "main": "./dist/index.js",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "build": "ncc build src/index.ts",
+    "format": "ts-scripts format",
+    "lint": "ts-scripts lint",
+    "prepare": "ts-scripts install",
+    "specs": "ts-scripts specs",
+    "test": "ts-scripts test"
+  },
+  "files": [
+    "dist/"
+  ],
+  "keywords": [
+    "github",
+    "action",
+    "timely",
+    "deploy",
+    "deployment",
+    "status",
+    "update"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0",
+    "@vercel/ncc": "^0.31.1"
+  },
+  "devDependencies": {
+    "@borderless/ts-scripts": "^0.6.0",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
+    "typescript": "^4.4.4"
+  },
+  "types": "./dist/index.d.ts"
+}

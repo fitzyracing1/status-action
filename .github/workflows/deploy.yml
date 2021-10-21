@@ -1,0 +1,32 @@
+name: Deploy
+on: deployment
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start deployment
+        uses: ./
+        with:
+          token: ${{ github.token }}
+          state: "in_progress"
+          deployment_id: ${{ github.event.deployment.id }}
+      - name: Deployment context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo $GITHUB_CONTEXT
+      - name: Mark deployment as success
+        if: success()
+        uses: ./
+        with:
+          token: ${{ github.token }}
+          state: "success"
+          deployment_id: ${{ github.event.deployment.id }}
+          environment_url: https://github.com/timely-deploy/status-action
+      - name: Mark deployment as failure
+        if: failure()
+        uses: ./
+        with:
+          token: ${{ github.token }}
+          state: "failure"
+          deployment_id: ${{ github.event.deployment.id }}

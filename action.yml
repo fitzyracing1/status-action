@@ -1,0 +1,27 @@
+name: "Timely Deployment Status"
+description: "GitHub Action for updating deployment statuses"
+author: "timely-deploy"
+branding:
+  icon: "clock"
+  color: "green"
+inputs:
+  token:
+    description: "Github token"
+    required: true
+  deployment_id:
+    description: "The ID of the deployment to update status"
+    required: true
+  state:
+    description: "The state of the status"
+    required: true
+  log_url:
+    description: "The full URL of the deployment's output"
+  description:
+    description: "A short description of the status"
+  environment:
+    description: "Name for the target deployment environment"
+  environment_url:
+    description: "Sets the URL for accessing your environment"
+runs:
+  using: "node12"
+  main: "dist/index.js"
