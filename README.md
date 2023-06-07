@@ -1,7 +1,6 @@
 # Deployment Status Action
 
 [![Build status][build-image]][build-url]
-[![Build coverage][coverage-image]][coverage-url]
 
 > GitHub Action for updating deployment statuses.
 
@@ -15,6 +14,9 @@ on: deployment
 jobs:
   deploy:
     name: Deploy
+    # The workflow must have write access to deployments.
+    permissions:
+      deployments: write
     runs-on: ubuntu-latest
     steps:
       - name: Start deployment
@@ -48,7 +50,5 @@ See [deploy.yml](.github/workflows/deploy.yml) for example deployment statuses u
 
 MIT
 
-[build-image]: https://img.shields.io/github/workflow/status/timely-deploy/action/CI/main
+[build-image]: https://img.shields.io/github/actions/workflow/status/timely-deploy/action/ci.yml?branch=main
 [build-url]: https://github.com/timely-deploy/action/actions/workflows/ci.yml?query=branch%3Amain
-[coverage-image]: https://img.shields.io/codecov/c/gh/timely-deploy/action
-[coverage-url]: https://codecov.io/gh/timely-deploy/action
