@@ -29,7 +29,8 @@
     "lint": "ts-scripts lint",
     "prepare": "ts-scripts install",
     "specs": "ts-scripts specs",
-    "test": "ts-scripts test"
+    "test": "ts-scripts test",
+    "version": "npm run build && git add -A dist"
   },
   "files": [
     "dist/"
@@ -46,13 +47,12 @@
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0",
-    "@vercel/ncc": "^0.31.1"
+    "@vercel/ncc": "^0.36.1"
   },
   "devDependencies": {
-    "@borderless/ts-scripts": "^0.6.0",
-    "@types/jest": "^27.0.2",
-    "@types/node": "^16.11.0",
-    "typescript": "^4.4.4"
+    "@borderless/ts-scripts": "^0.13.6",
+    "@types/node": "^20.2.5",
+    "typescript": "^5.1.3"
   },
   "types": "./dist/index.d.ts"
 }
