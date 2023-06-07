@@ -46,6 +46,16 @@ jobs:
 
 See [deploy.yml](.github/workflows/deploy.yml) for example deployment statuses using GitHub Actions.
 
+## Development
+
+Releasing a new version:
+
+```sh
+npm version [minor | patch]
+git tag -f v1 HEAD
+git push origin v1
+```
+
 ## License
 
 MIT
